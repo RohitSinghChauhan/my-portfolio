@@ -87,7 +87,7 @@ const Navbar = () => {
           {/* Maximize Icon with hover animation and fullscreen toggle */}
           <div className="flex gap-6 items-center">
             <div
-              className="relative"
+              className="relative hidden md:inline-block"
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
               onClick={toggleFullscreen}
