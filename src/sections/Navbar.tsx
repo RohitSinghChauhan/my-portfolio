@@ -3,7 +3,7 @@ import DarkModeToggler from "../components/DarkModeToggler";
 import Drawer from "../components/navbar/Drawer";
 import DrawerBtn from "../components/navbar/DrawerBtn";
 import { nav_links } from "../data";
-import { Maximize, Minimize, Minimize2 } from "lucide-react";
+import { Maximize, Minimize } from "lucide-react";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -93,9 +93,8 @@ const Navbar = () => {
               onClick={toggleFullscreen}
             >
               <div
-                className={`transition-all duration-300 cursor-pointer ${
-                  hovered ? "scale-110" : "scale-100 rotate-0"
-                }`}
+                className={`transition-all duration-300 cursor-pointer ${hovered ? "scale-110" : "scale-100 rotate-0"
+                  }`}
               >
                 {isFullscreen ? (
                   <Minimize className="w-5 h-5" />
