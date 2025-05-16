@@ -2,6 +2,7 @@ import Marquee from "react-fast-marquee";
 
 const skills = [
   { title: "React", logo: "devicon-react-original" },
+  { title: "Next Js", logo: "devicon-nextjs-plain" },
   { title: "Typescript", logo: "devicon-typescript-plain" },
   { title: "Javascript", logo: "devicon-javascript-plain" },
   { title: "Firebase", logo: "devicon-firebase-plain" },
@@ -24,7 +25,7 @@ const Skills = () => {
     >
       <p className="text-heading">MY SKILLS</p>
 
-      <Marquee pauseOnClick>
+      <Marquee pauseOnClick speed={25}>
         {skills.map(({ title, logo }, i) => (
           <div
             key={i}
@@ -39,7 +40,7 @@ const Skills = () => {
         ))}
       </Marquee>
 
-      <p className="quote px-3 text-center">
+      <p data-aos="fade-up" className="quote px-3 text-center">
         "I'm writing my story so that others might see fragments of
         themeselves."
       </p>

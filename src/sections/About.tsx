@@ -37,6 +37,7 @@ const About = () => {
     sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row"
     >
       <div
+        data-aos="fade-right"
         className="flex flex-col gap-5 pl-[2rem]
         sm:justify-center md:justify-center lg:justify-start xl:justify-start 2xl:justify-start
         sm:items-center md:items-center lg:items-start xl:items-start 2xl:items-start
@@ -58,6 +59,7 @@ const About = () => {
       </div>
 
       <div
+        data-aos="fade-left"
         className="flex flex-col gap-5
         sm:pl-2 md:pl-2 lg:pl-8 xl:pl-8 2xl:pl-8
         sm:pr-0 md:pr-0 lg:pr-[3rem] xl:pr-[3rem] 2xl:pr-[3rem]

@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 html {
-  @apply font-def bg-default text-[#262626] leading-none;
+  @apply font-def bg-default text-[#262626] leading-none scroll-smooth;
 }
 
 @layer components {

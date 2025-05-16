@@ -3,10 +3,13 @@ import DarkModeToggler from "../components/DarkModeToggler";
 import Drawer from "../components/navbar/Drawer";
 import DrawerBtn from "../components/navbar/DrawerBtn";
 import { nav_links } from "../data";
+import { Maximize, Minimize, Minimize2 } from "lucide-react";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false); // State for fullscreen mode
+  const [hovered, setHovered] = useState(false); // Track hover state for animation
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -26,6 +29,24 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const toggleFullscreen = () => {
+    if (!isFullscreen) {
+      // Request fullscreen
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      } else if (document.body.requestFullscreen) {
+        // Some browsers may still use body
+        document.body.requestFullscreen();
+      }
+    } else {
+      // Exit fullscreen
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+    setIsFullscreen(!isFullscreen);
+  };
 
   return (
     <>
@@ -49,8 +70,10 @@ const Navbar = () => {
             {nav_links.map((e) => (
               <a key={e.id} href={e.s_id}>
                 <p
-                  className="p-3 border-b border-transparent hover:border-gray-700
-              hover:dark:border-white duration-150"
+                  className="p-1 hover:border-gray-700
+              hover:dark:border-white 
+              relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 dark:after:bg-white 
+      after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100"
                 >
                   {e.title}
                 </p>
@@ -60,7 +83,30 @@ const Navbar = () => {
 
           {/*FOR SMALLER SCREENS*/}
           <DrawerBtn toggleDrawer={toggleDrawer} />
-          <DarkModeToggler />
+
+          {/* Maximize Icon with hover animation and fullscreen toggle */}
+          <div className="flex gap-6 items-center">
+            <div
+              className="relative"
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+              onClick={toggleFullscreen}
+            >
+              <div
+                className={`transition-all duration-300 cursor-pointer ${
+                  hovered ? "scale-110" : "scale-100 rotate-0"
+                }`}
+              >
+                {isFullscreen ? (
+                  <Minimize className="w-5 h-5" />
+                ) : (
+                  <Maximize className="w-5 h-5" />
+                )}
+              </div>
+            </div>
+
+            <DarkModeToggler />
+          </div>
         </div>
 
         {isDrawerOpen ? (

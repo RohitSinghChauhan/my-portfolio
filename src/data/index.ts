@@ -13,8 +13,8 @@ interface Navlinks {
 export const nav_links: Navlinks[] = [
   { id: 1, title: "About Me", s_id: "#about" },
   { id: 2, title: "Skills", s_id: "#skills" },
-  { id: 3, title: "Projects", s_id: "#projects" },
-  { id: 4, title: "Contact Me", s_id: "#contact" },
+  // { id: 3, title: "Projects", s_id: "#projects" },
+  { id: 3, title: "Contact Me", s_id: "#contact" },
 ];
 
 interface Project {

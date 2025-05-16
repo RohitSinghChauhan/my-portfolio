@@ -10,7 +10,10 @@ function DarkModeToggler() {
   };
 
   return (
-    <button onClick={toggleDarkMode} className="active:animate-ping">
+    <button
+      onClick={toggleDarkMode}
+      className="active:animate-ping transition-all duration-300  hover:scale-110"
+    >
       {darkMode ? <Sun /> : <SunMoon />}
     </button>
   );
